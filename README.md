@@ -1,76 +1,89 @@
-## Install Debian in Virtual Box & make connection to mircozed board (linux distribution of the lecture MIC FH Joanneum)
+## Install Debian in Virtual Box and connect to MircoZed board (linux distribution of the lecture MIC FH Joanneum)
 
- - Install and open Oracle VM Virtual Box from https://www.virtualbox.org/
- - Download Debian from: http://ftp.heanet.ie/pub/debian/dists/jessie/main/installer-amd64/current/images/netboot/mini.iso
- - Click New in Oracle VM.
+ - Install and open Oracle VM VirtualBox from https://www.virtualbox.org/
+ - Download Debian from: http://cdimage.debian.org/debian-cd/8.6.0/amd64/iso-cd/debian-8.6.0-amd64-netinst.iso
+ - Click New in VirtualBox
  - Name your new VM “debian” choose Type “Linux” and Version “Debian 64Bit”. Click Next.
- - Choose a memory size. Recommended half of the System memory. Click Next.
+ - Choose a memory size (RAM). Recommended half of thes system memory. At least 1024MB. Click Next.
  - Hard Disk: Create a virtual Hard disk now. Click Create.
- - Hard disk file Type: VDI. Click Next
+ - Hard disk file Type: VDI. Click Next.
  - Storage on physical hard disk: Dynamically allocated. Click Next.
- - File location and size: Choose a path, on which the virtual hard disk gets placed. Choose a maximum size. At least 10GB. Click create.
- - In your Oracle VM Virtual Box Manager, you have now a VM added. On the right side, you can see the properties of your VM.
- - Click the start Button. 
- - A window “Select start-up disk” appears. Choose the Debian ISO downloaded bevor. Click Start
- - Press Install
- - Choose your Language, press Enter
+ - File location and size: Choose a path, on which the virtual hard disk gets placed. Choose a maximum size. At least 12GB. Click Create.
+ - In your VirtualBox Manager, you now have a VM listed. On the right side, you can see the properties of your VM.
+ - Go to Change and add a shared folder to the VM configuration. Select "Automatically mount" and click OK.
+ - Click the start Button to boot the VM.
+ - A window “Select start-up disk” appears. Choose the Debian ISO downloaded before. Click Start.
+ - Linux is booting from the install media. Press Enter to start the installation.
+ - Choose your language (English) and press Enter
  - Select your location and press Enter
- - Configure locales: United Kingdom. Press Enter
  - Configure the keyboard: Select your keyboard standard.
- - Configure the network: Default. Press Continue.
- - Domain Name: let empty. Press Continue.
- - Choose a mirror of the Debian archive: Country in which you are now. If Austria, choose ftp.tu-graz.ac.at
- - Proxy: let blank. Press Continue
- - Set up users and passwords: Root password: root, User Name: whateveryouwant, User name for your account: same as user, user password: whateveryouwant.
+ - Network configuration is automatically detected.
+ - Hostname: Your FH login. Is used for reference only.
+ - Domain Name: leave empty. Press Continue.
+ - Set up users and passwords: Root password: root, Full Name: whateveryouwant, User name for your account: same as user, password: whateveryouwant
  - Partition disks: Guided – use entire disk.
  - Select disk to partition: Just one should be available. Choose it.
  - Partition disks: All files in one partition
  - Finish partitioning and write changes to disk
- - Partition disks: Yes
+ - Partition disks and write changes: Yes
+ - Wait until base system is installed.
+ - Choose a mirror of the Debian archive: Country in which you are now. If Austria, choose ftp.tu-graz.ac.at
+ - Proxy: leave blank. Press Enter.
  - Configuring popularity-contest: make your own decision.
  - Software selection: Deselect “Debian desktop environment” by pressing space bar. Select MATE by pressing space bar. Press Enter.
- - Install the GRUB boot loader on a hard disk: Yes, /dev/sda (ata-…..)
- - Finish the installation: Continue
- - Debian installation appears again. Press Devices -> Optical Drives -> Remove disk from virtual drive
- - Press Machine -> Reset
- - Debian is starting.
+ - Wait until full system is installed.
+ - Install the GRUB boot loader on a hard disk: Yes, on /dev/sda (ata-VBOX...)
+ - Finish the installation: Continue.
+ - If Debian installation appears again: Press Devices -> Optical Drives -> Remove install disk. Reboot the VM.
+ - Debian Linux is starting! Your will the the bootloader followed by a login prompt.
+ - Login with the username selected during installation.
 
+Now we setup the debian system.
+Go to: System -> Preferences -> Keyboard -> Layouts and check that only your Keyboard layout is in the list.
+Go to: System -> Preferences -> Screensaver and disable it (both checkboxes).
+Find Application -> System Tools -> MATE Terminal and drag & drop the icon to the desktop.
 
-
-
-Now to set up the debian system open the MATE Terminal:
-Application -> System Tools -> MATE Terminal.
-Execute the following instructions:
-Add your user to the sudo group:
-
+Open the terminal and run the following commands:
+This will add your user to the sudo group, allowing us to work without beeing root in the future.
 ```sh
 $ su -
-# adduser <user> sudo
+# adduser <username> sudo
 # reboot
 ```
-some packages for guesst additions (the guesst additions are VM features, like shared clipboard and shared folder):
 
+The VirtualBox guest additions are drivers required for seamless graphics, mouse input, shared clipboard and shared folders.
+The following build tools are needed to install guest additions:
 ```sh
-$ sudo apt-get install gcc linux-headers-$(uname -r) git build-essential
+$ sudo apt-get install gcc gdb build-essential git linux-headers-$(uname -r)
 ```
 
-Now insert the guesst additions CD:
-Devices -> Insert Guest Additions CD image…
+Confirm and install the selected packages.
+Now insert the guest additions CD:
+Devices -> Insert Guest Additions CD image...
+If we have to start the setup manually:
 ```sh
 $ su
 # cd /media/cdrom
 # sh ./VBoxLinuxAdditions.run 
+# adduser <username> vboxsf
 # reboot
-$ sudo adduser xxxx vboxsf
 ```
-Now you can add a shared folder. 
-Devices -> Shared Folders -> Shared Folders Settings…
+You should now see your shared folder on the desktop.
+
+Optional:
+Optimize your VM for a better experience in the future:
+Enable shared clipboard between Host and Guest
+Assign a second to CPU to the VM if available
+Assign more than 1GB of RAM
+Activate 3D acceleration and increase graphics memory to 64MB
+Find the best display resolution and scaling mode for your work
+Discover tools and applications in the MATE desktop
+
 
 Now install some basic packages:
 ```sh
 $ . ./packages.sh
 ```
-
 
 Install cross compiler. (armhf ARM hard floating point)
 
