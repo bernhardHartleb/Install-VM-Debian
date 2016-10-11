@@ -1,4 +1,4 @@
-## Install Debian in Virtual Box and connect to MircoZed board (linux distribution of the lecture MIC FH Joanneum)
+## Install Debian in Virtual Box and connect to MircoZed board (ESP lecture FH Joanneum)
 
  - Install and open Oracle VM VirtualBox from https://www.virtualbox.org/
  - Download Debian from: http://cdimage.debian.org/debian-cd/8.6.0/amd64/iso-cd/debian-8.6.0-amd64-netinst.iso
@@ -148,8 +148,8 @@ To connect the adapter2 to the board, the network has to get configured as follo
 $ sudo echo -e "auto eth1\niface eth1 inet static\naddress 192.168.1.200\nnetmask 255.255.255.0\n" >> /etc/network/interfaces
 ```
 
-With this configuration, an internet connection on the microzed board can get established by executing the following commands as root. (Has to be done after every reboot of the virtual machine.)
-
+With this configuration, an internet connection on the microzed board can get established by executing the following commands as root.
+(This has to be done after every reboot of the virtual machine.)
 ```sh
 $ su
 # echo 1 > /proc/sys/net/ipv4/ip_forward
@@ -158,11 +158,12 @@ $ su
 # iptables -A FORWARD -i eth1 -j ACCEPT
 ```
 
+To connect to the board, use the following command:
+```sh
+$ ssh root@$192.168.1.120
+```
+
 To view the file system on the board the following command can be used:
 ```sh
 $ caja "sftb://$192.168.1.120/root"
-```
-To apply a connection to the board, the following commands can be used:
-```sh
-$ ssh root@$192.168.1.120
 ```
