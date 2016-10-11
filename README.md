@@ -69,48 +69,50 @@ $ su
 # reboot
 ```
 You should now see your shared folder on the desktop.
+If there are no issues, shutdown the VM create a restore point of the current state.
 
-Optional:
-Optimize your VM for a better experience in the future:
-Enable shared clipboard between Host and Guest
-Assign a second to CPU to the VM if available
-Assign more than 1GB of RAM
-Activate 3D acceleration and increase graphics memory to 64MB
-Find the best display resolution and scaling mode for your work
-Discover tools and applications in the MATE desktop
+## Development tools
 
-
-Now install some basic packages:
+Find a way to copy the packages.sh file into the virtual machine and run it from the console.
+This will install some basic packages required for the future:
 ```sh
-$ . ./packages.sh
+$ ./packages.sh
 ```
 
-Install cross compiler. (armhf ARM hard floating point)
-
+Install a cross compiler for "armhf" (ARM hard floating point) to compile Linux applications for the uZed board.
 ```sh
 $ cd /etc/apt/sources.list.d/crosstools.list
 $ su
 # cat > crosstools.list
 # deb http://emdebian.org/tools/debian/ jessie main
 “press ctrl+D to save file”
-# apt-get install curl
 # exit
-$ curl http://emdebian.org/tools/debian/emdebian-toolchain-archive.key | sudo apt-key add –
+$ curl http://emdebian.org/tools/debian/emdebian-toolchain-archive.key | sudo apt-key add -
 
 $ sudo dpkg --add-architecture armhf
 $ sudo apt-get update
 $ sudo apt-get install crossbuild-essential-armhf
+```
 
-$ sudo apt-get install build-essential git debootstrap u-boot-tools device-tree-compiler
-
+Install a x86 toolchain (32bit) necesesary for Xilinx tools and BSP kernel
+```sh
 $ sudo dpkg --add-architecture i386
 $ sudo apt-get update
 $ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 zlib1g:i386 
-$ sudo apt-get install u-boot-tools
 $ sudo apt-get install libssl-dev
 ```
 
-# Connect to board
+## (Optional) VM optimization
+
+Optimize your VM to safe time in the future:
+ - Enable the shared clipboard between Host and Guest.
+ - Assign a 2nd CPU to the VM if available.
+ - Assign more than 1GB of RAM.
+ - Activate 3D acceleration and increase graphics memory to 64MB.
+ - Find the best display resolution and scaling mode for your work.
+ - Discover the MATE desktop.
+
+## Connect to the uZed board
 
 To connect the board to the computer, some settings have to get met. First of all, the network card setting on Windows have to get set as follow:
 
