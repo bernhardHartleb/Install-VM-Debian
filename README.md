@@ -115,27 +115,30 @@ Optimize your VM to save time in the future:
 
 ## Connect to the uZed board via serial console
 
-The most basic access to any embedded system is often the serial console. Since serial ports do not exist any more on most devices, USB is used instead.
-These instructions work assuming there is a default Linux installation when booting from QSPI, or a custom installation when booting from the SDCard. Select the boot-mode jumpers accordingly.
+The most basic access to any embedded system is often the serial console. Since serial ports went mostly extinct, USB is used to transport the serial data instead.
+These instructions work assuming we boot the default Linux installation from QSPI flash.
 
-- Connect the uZed board via the mircoUSB connector to your host PC. This connection powers the board and acts as serial console at the same time.
-- Wait until your Windows host finishes installing drivers
+- Change the boot-mode jumpers to boot from QSPI.
+- Connect the uZed board via the mircoUSB connector to your host PC. This connection powers the board and acts as console at the same time.
+- Wait until your Windows host finishes installing drivers.
 - Click on Devices -> USB -> Silicon Labs CP2014 USB to UART Bridge. This forwards the USB device to the VM.
-- Open gtkterm
-- In gtkterm open Configuration -> Port: /dev/ttyUSB0 at 115200 baud
-- Click OK. Press Enter a few times in the block console.
+- Open gtkterm.
+- Click Configuration -> Port: Choose /dev/ttyUSB0 at 115200 Baud.
+- Click OK. Press Enter a few times in the black console.
 - The Zynq command prompt appears.
 
 You are now working with Linux on the uZed board! Do not modify files in the default installation. A custom image on the SDCard should be used for that.
 
 ## Connect to the uZed board via network
 
-To connect the board to the computer, some settings have to be adjusted. In this example... First of all, the network card setting on Windows has to be changed as follows:
+In this example a standalone configuration with fixed IP addresses is created, connecting the board directly to the host computer. A simple alternative is to rely on the DHCP server of your network and run "udhcpc" on the uZed board.
+First of all, the network card setting on Windows has to be changed as follows:
 
 *	IP: 192.168.1.150 
 *	Subnet mask:255.255.255.0
 
-Also the network of the virtual machine have to get adjust. To make an internet connection on the micorzed board possible, a second network has to get included in the virtual box setting, and attached to Bridge adapter. This can be done in the following way: 
+Also the network of the virtual machine have to get adjust. To make an internet connection on the microZed board possible, a second network has to get included in the virtual box setting, and attached to Bridge adapter.
+This can be done in the following way:
 
 * Network -> adapter 2 -> bridge connection -> Name of your network card, which is connected to the board. 
 
