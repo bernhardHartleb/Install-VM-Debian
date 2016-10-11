@@ -32,7 +32,7 @@ echo "### Installing networking tools"
 sudo apt-get install -y wireshark > /dev/null
 
 echo "### Installing misc tools"
-sudo apt-get install -y gparted minicom > /dev/null
+sudo apt-get install -y gparted minicom gtkterm > /dev/null
 
 echo "### Installing Python"
 sudo apt-get install -y python python3 python-serial python-setuptools python-gpgme > /dev/null
@@ -41,12 +41,12 @@ sudo apt-get install -y python-matplotlib > /dev/null
 echo "### Installing Go"
 sudo apt-get install -y golang > /dev/null
 
-echo "### Installing x86 toolchain. Necesesary for Xilinx tools and bb kernel"
-sudo dpkg --add-architecture i386
-sudo apt-get -y update > /dev/null
-sudo apt-get install -y libc6:i386 libncurses5:i386 libstdc++6:i386 zlib1g:i386
+#echo "### Installing x86 toolchain. Necesesary for Xilinx tools and bb kernel"
+#sudo dpkg --add-architecture i386
+#sudo apt-get -y update
+#sudo apt-get install -y libc6:i386 libncurses5:i386 libstdc++6:i386 zlib1g:i386
 
-echo "### Installing kernel and embedded linux tools"
+echo "### Installing embedded linux tools"
 sudo apt-get install -y device-tree-compiler debootstrap lzma lzop u-boot-tools
 
 #echo "### Installing Qt5 development libraries"

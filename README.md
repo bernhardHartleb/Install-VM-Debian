@@ -44,10 +44,11 @@ Go to: System -> Preferences -> Screensaver and disable it (both checkboxes).
 Find Application -> System Tools -> MATE Terminal and drag & drop the icon to the desktop.
 
 Open the terminal and run the following commands:
-This will add your user to the sudo group, allowing us to work without beeing root in the future.
+This will add your user to the sudo and dialout groups, allowing us to work without beeing root in the future.
 ```sh
 $ su -
 # adduser <username> sudo
+# adduser <username> dialout
 # reboot
 ```
 
@@ -74,7 +75,7 @@ If there are no issues, shutdown the VM create a restore point of the current st
 ## Development tools
 
 Find a way to copy the packages.sh file into the virtual machine and run it from the console.
-This will install some basic packages required for the future:
+This will install some basic packages required for future labs:
 ```sh
 $ ./packages.sh
 ```
@@ -104,7 +105,7 @@ $ sudo apt-get install libssl-dev
 
 ## (Optional) VM optimization
 
-Optimize your VM to safe time in the future:
+Optimize your VM to save time in the future:
  - Enable the shared clipboard between Host and Guest.
  - Assign a 2nd CPU to the VM if available.
  - Assign more than 1GB of RAM.
@@ -112,9 +113,24 @@ Optimize your VM to safe time in the future:
  - Find the best display resolution and scaling mode for your work.
  - Discover the MATE desktop.
 
-## Connect to the uZed board
+## Connect to the uZed board via serial console
 
-To connect the board to the computer, some settings have to get met. First of all, the network card setting on Windows have to get set as follow:
+The most basic access to any embedded system is often the serial console. Since serial ports do not exist any more on most devices, USB is used instead.
+These instructions work assuming there is a default Linux installation when booting from QSPI, or a custom installation when booting from the SDCard. Select the boot-mode jumpers accordingly.
+
+- Connect the uZed board via the mircoUSB connector to your host PC. This connection powers the board and acts as serial console at the same time.
+- Wait until your Windows host finishes installing drivers
+- Click on Devices -> USB -> Silicon Labs CP2014 USB to UART Bridge. This forwards the USB device to the VM.
+- Open gtkterm
+- In gtkterm open Configuration -> Port: /dev/ttyUSB0 at 115200 baud
+- Click OK. Press Enter a few times in the block console.
+- The Zynq command prompt appears.
+
+You are now working with Linux on the uZed board! Do not modify files in the default installation. A custom image on the SDCard should be used for that.
+
+## Connect to the uZed board via network
+
+To connect the board to the computer, some settings have to be adjusted. In this example... First of all, the network card setting on Windows has to be changed as follows:
 
 *	IP: 192.168.1.150 
 *	Subnet mask:255.255.255.0
