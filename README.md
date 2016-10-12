@@ -83,7 +83,7 @@ $ ./packages.sh
 
 Install a cross compiler for "armhf" (ARM hard floating point) to compile Linux applications for the uZed board.
 ```sh
-$ cd /etc/apt/sources.list.d/crosstools.list
+$ cd /etc/apt/sources.list.d/
 $ su
 # cat > crosstools.list
 # deb http://emdebian.org/tools/debian/ jessie main
