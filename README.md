@@ -30,7 +30,7 @@
  - Choose a mirror of the Debian archive: Country in which you are now. If Austria, choose ftp.tu-graz.ac.at
  - Proxy: leave blank. Press Enter.
  - Configuring popularity-contest: make your own decision.
- - Software selection: Deselect “Debian desktop environment” by pressing space bar. Select MATE by pressing space bar. Press Enter.
+ - Software selection: Select MATE by pressing space bar. Unselect “Debian desktop environment” by pressing space bar. Press Enter.
  - Wait until full system is installed.
  - Install the GRUB boot loader on a hard disk: Yes, on /dev/sda (ata-VBOX...)
  - Finish the installation: Continue.
@@ -47,6 +47,7 @@ Open the terminal and run the following commands:
 This will add your user to the sudo and dialout groups, allowing us to work without beeing root in the future.
 ```sh
 $ su -
+# apt-get install sudo mate
 # adduser <username> sudo
 # adduser <username> dialout
 # reboot
