@@ -23,7 +23,7 @@ echo "### Installing vim"
 sudo apt-get install -y vim vim-gnome exuberant-ctags > /dev/null
 
 echo "### Installing compiling tools"
-sudo apt-get install -y build-essential gcc gdb autoconf ncurses-dev xutils-dev colorgcc > /dev/null
+sudo apt-get install -y build-essential gcc gdb autoconf libtool ncurses-dev xutils-dev colorgcc > /dev/null
 
 echo "### Installing kernel tools"
 sudo apt-get install -y linux-tools bison flex texinfo gnuplot gnuplot-x11 > /dev/null
