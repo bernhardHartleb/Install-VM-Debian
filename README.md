@@ -88,7 +88,7 @@ Install a cross compiler for "armhf" (ARM hard floating point) to compile Linux 
 $ cd /etc/apt/sources.list.d/
 $ su
 # cat > crosstools.list
-# deb http://emdebian.org/tools/debian/ jessie main
+# deb http://emdebian.org/tools/debian/ stretch main
 “press ctrl+D to save file”
 # exit
 $ curl http://emdebian.org/tools/debian/emdebian-toolchain-archive.key | sudo apt-key add -
@@ -106,7 +106,7 @@ $ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 zlib1g:i386
 $ sudo apt-get install libssl-dev
 ```
 
-## (Optional) VM optimization
+## VM optimization
 
 Optimize your VM to save time in the future:
  - Enable the shared clipboard between Host and Guest.

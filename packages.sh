@@ -55,5 +55,4 @@ sudo apt-get install -y device-tree-compiler debootstrap lzma lzop u-boot-tools
 # Personal preference
 echo "### Installing optional console tools"
 sudo apt-get install -y tree meld xclip > /dev/null
-sudo apt-get install -y nautilus-open-terminal > /dev/null
-#sudo apt-get install mate-extras guake
+#sudo apt-get install -y mate-extras guake
