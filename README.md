@@ -1,6 +1,6 @@
 ## Install Debian in Virtual Box and connect to Zynq development board (ESP lecture, FH Joanneum)
 
- - Install and open Oracle VM VirtualBox from https://www.virtualbox.org/
+ - Install and open Oracle VM VirtualBox version 5.1.XX from https://www.virtualbox.org/
  - Download Debian from: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-9.2.1-amd64-netinst.iso
  - Click New in VirtualBox
  - Name your new VM “Debian 9.2” choose Type “Linux” and Version “Debian 64Bit”. Click Next.
@@ -20,13 +20,15 @@
  - Network configuration is automatically detected.
  - Hostname: Your FH login. Is used for reference only.
  - Domain Name: leave empty. Press Continue.
- - Set up users and passwords: Root password: root, Full Name: <your name>, User name for your account: same as user, password: <your pw>
+ - Set up users and passwords: Root password: root
+ - Full Name: [your name], User name for your account: [your choice], password: [your pw]
  - Partition disks: Guided – use entire disk.
  - Select disk to partition: Just one should be available. Choose it.
  - Partition disks: All files in one partition
  - Finish partitioning and write changes to disk
  - Partition disks and write changes: Yes
  - Wait until base system is installed.
+ - Scan another CD / DVD: No
  - Choose a mirror of the Debian archive: Country in which you are now. If Austria, choose ftp.tu-graz.ac.at
  - Proxy: leave blank. Press Enter.
  - Configuring popularity-contest: make your own decision.
