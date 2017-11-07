@@ -1,9 +1,9 @@
 ## Install Debian in Virtual Box and connect to MircoZed board (ESP lecture FH Joanneum)
 
  - Install and open Oracle VM VirtualBox from https://www.virtualbox.org/
- - Download Debian from: http://cdimage.debian.org/debian-cd/8.6.0/amd64/iso-cd/debian-8.6.0-amd64-netinst.iso
+ - Download Debian from: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-9.2.1-amd64-netinst.iso
  - Click New in VirtualBox
- - Name your new VM “debian” choose Type “Linux” and Version “Debian 64Bit”. Click Next.
+ - Name your new VM “Debian 9.2” choose Type “Linux” and Version “Debian 64Bit”. Click Next.
  - Choose a memory size (RAM). Recommended half of thes system memory. At least 1024MB. Click Next.
  - Hard Disk: Create a virtual Hard disk now. Click Create.
  - Hard disk file Type: VDI. Click Next.
@@ -20,7 +20,7 @@
  - Network configuration is automatically detected.
  - Hostname: Your FH login. Is used for reference only.
  - Domain Name: leave empty. Press Continue.
- - Set up users and passwords: Root password: root, Full Name: whateveryouwant, User name for your account: same as user, password: whateveryouwant
+ - Set up users and passwords: Root password: root, Full Name: <your name>, User name for your account: same as user, password: <your pw>
  - Partition disks: Guided – use entire disk.
  - Select disk to partition: Just one should be available. Choose it.
  - Partition disks: All files in one partition
