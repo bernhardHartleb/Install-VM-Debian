@@ -89,6 +89,7 @@ $ cd /etc/apt/sources.list.d/
 $ su
 # cat > crosstools.list
 # deb http://emdebian.org/tools/debian/ stretch main
+#
 “press ctrl+D to save file”
 # exit
 $ curl http://emdebian.org/tools/debian/emdebian-toolchain-archive.key | sudo apt-key add -
@@ -168,5 +169,5 @@ $ ssh root@$192.168.1.120
 
 To view the file system on the board the following command can be used:
 ```sh
-$ caja "sftb://$192.168.1.120/root"
+$ caja "sftp://$192.168.1.120/root"
 ```
