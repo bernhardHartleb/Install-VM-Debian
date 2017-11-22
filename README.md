@@ -144,24 +144,16 @@ First of all, the network card setting on Windows has to be changed as follows:
 Also the network of the virtual machine have to get adjust. To make an internet connection on the Zybo board possible, a second network has to get included in the virtual box setting, and attached to Bridge adapter.
 This can be done in the following way:
 
-* Network -> adapter 2 -> bridge connection -> Name of your network card, which is connected to the board. 
+* Network -> Adapter 2 -> Bridge connection -> Name of your network card, which is connected to the board.
 
-To connect the adapter2 to the board, the network has to get configured as follow:
+To connect the Adapter2 to the board, the network has to get configured as follows:
 
 ```sh
-$ sudo echo -e "auto eth1\niface eth1 inet static\naddress 192.168.1.200\nnetmask 255.255.255.0\n" > /etc/network/interfaces.d/bridge
+$ sudo -i
+$ echo -e "auto enp0s8\niface enp0s8 inet static\naddress 192.168.1.200\nnetmask 255.255.255.0\n" > /etc/network/interfaces.d/bridge
 ```
 
-With this configuration, an internet connection on the Zybo board can get established by executing the following commands as root.
-(This has to be done after every reboot of the virtual machine.)
-```sh
-$ su
-# echo 1 > /proc/sys/net/ipv4/ip_forward
-# iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-# iptables -A FORWARD -i eth0 -o eth1 -m state --state RELATED,ESTABLISHED -j ACCEPT
-# iptables -A FORWARD -i eth1 -j ACCEPT
-```
-
+After a restarted of the VM the Zybo board should now be available in your LAN.
 To connect to the board, use the following command:
 ```sh
 $ ssh root@192.168.1.10
@@ -175,4 +167,14 @@ $ scp hello-arm root@192.168.1.10:/root/
 To view the file system on the board the following command can be used:
 ```sh
 $ caja "sftp://root@192.168.1.10/root"
+```
+
+As an additional option, an internet connection on the Zybo board can get established by executing the following commands as root.
+(This has to be done after every reboot of the virtual machine.)
+```sh
+$ su
+# echo 1 > /proc/sys/net/ipv4/ip_forward
+# iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
+# iptables -A FORWARD -i enp0s3 -o enp0s3 -m state --state RELATED,ESTABLISHED -j ACCEPT
+# iptables -A FORWARD -i enp0s8 -j ACCEPT
 ```
