@@ -149,7 +149,7 @@ This can be done in the following way:
 To connect the adapter2 to the board, the network has to get configured as follow:
 
 ```sh
-$ sudo echo -e "auto eth1\niface eth1 inet static\naddress 192.168.1.200\nnetmask 255.255.255.0\n" >> /etc/network/interfaces
+$ sudo echo -e "auto eth1\niface eth1 inet static\naddress 192.168.1.200\nnetmask 255.255.255.0\n" > /etc/network/interfaces.d/bridge
 ```
 
 With this configuration, an internet connection on the Zybo board can get established by executing the following commands as root.
@@ -164,10 +164,15 @@ $ su
 
 To connect to the board, use the following command:
 ```sh
-$ ssh root@$192.168.1.120
+$ ssh root@192.168.1.10
+```
+
+To transfer files manually:
+```sh
+$ scp hello-arm root@192.168.1.10:/root/
 ```
 
 To view the file system on the board the following command can be used:
 ```sh
-$ caja "sftp://$192.168.1.120/root"
+$ caja "sftp://root@192.168.1.10/root"
 ```
