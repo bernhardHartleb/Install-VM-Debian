@@ -1,9 +1,9 @@
-## Install Debian in Virtual Box and connect to Zynq development board (ESP lecture, FH Joanneum)
+## Install Debian in Virtual Box and connect to Zynq development board (FH Joanneum)
 
- - Install and open Oracle VM VirtualBox version 5.1.XX from https://www.virtualbox.org/
- - Download Debian from: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-9.2.1-amd64-netinst.iso
+ - Install and open Oracle VM VirtualBox 5.2.X from https://www.virtualbox.org/
+ - Download Debian from: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-9.4.0-amd64-netinst.iso
  - Click New in VirtualBox
- - Name your new VM “Debian 9.2” choose Type “Linux” and Version “Debian 64Bit”. Click Next.
+ - Name your new VM “Debian 9.4” choose Type “Linux” and Version “Debian 64Bit”. Click Next.
  - Choose a memory size (RAM). Recommended half of thes system memory. At least 1024MB. Click Next.
  - Hard Disk: Create a virtual Hard disk now. Click Create.
  - Hard disk file Type: VDI. Click Next.
