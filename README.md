@@ -77,8 +77,7 @@ If there are no issues, shutdown the VM create a restore point of the current st
 
 ## Development tools
 
-Find a way to copy the packages.sh file into the virtual machine and run it from the console.
-This will install some basic packages required for future labs:
+Find a way to copy the packages.sh file into the virtual machine and run it from the console. Make sure to get the file and not the HTTP webpage! This will install some basic packages required for future labs:
 ```sh
 $ ./packages.sh
 ```
