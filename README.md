@@ -140,12 +140,12 @@ First of all, the network card setting on Windows has to be changed as follows:
 *	IP: 192.168.1.150 
 *	Subnet mask:255.255.255.0
 
-Also the network of the virtual machine have to get adjust. To make an internet connection on the Zybo board possible, a second network has to get included in the virtual box setting, and attached to Bridge adapter.
+Also the network of the virtual machine has to be adjusted. To make an internet connection on the Zybo board possible, a second network has to get included in the virtual box setting, and attached to Bridge adapter.
 This can be done in the following way:
 
 * Network -> Adapter 2 -> Bridge connection -> Name of your network card, which is connected to the board.
 
-To connect the Adapter2 to the board, the network has to get configured as follows:
+To connect the Adapter2 to the board, the network has to be configured as follows:
 
 ```sh
 $ sudo -i
@@ -155,17 +155,17 @@ $ echo -e "auto enp0s8\niface enp0s8 inet static\naddress 192.168.1.200\nnetmask
 After a restarted of the VM the Zybo board should now be available in your LAN.
 To connect to the board, use the following command:
 ```sh
-$ ssh root@192.168.1.10
+$ ssh root@192.168.1.103
 ```
 
 To transfer files manually:
 ```sh
-$ scp hello-arm root@192.168.1.10:/root/
+$ scp hello-arm root@192.168.1.103:/root/
 ```
 
 To view the file system on the board the following command can be used:
 ```sh
-$ caja "sftp://root@192.168.1.10/root"
+$ caja "sftp://root@192.168.1.103/root"
 ```
 
 As an additional option, an internet connection on the Zybo board can get established by executing the following commands as root.
