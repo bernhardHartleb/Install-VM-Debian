@@ -1,6 +1,5 @@
 #!/bin/bash
-# Adrian Remonda 2013
-# Bernhard Hartleb 2017
+# Bernhard Hartleb 2018
 
 sudo apt-get -y update
 sudo apt-get -y upgrade
@@ -14,7 +13,7 @@ echo "### Installing ssh server"
 sudo apt-get install -y openssh-server > /dev/null
 
 echo "### Installing version control"
-sudo apt-get install -y git gitk git-gui mercurial > /dev/null
+sudo apt-get install -y git gitk git-gui > /dev/null
 
 echo "### Installing compression tools"
 sudo apt-get install -y zip unzip unrar-free p7zip xarchiver > /dev/null
@@ -35,21 +34,21 @@ echo "### Installing misc tools"
 sudo apt-get install -y gparted minicom gtkterm > /dev/null
 
 echo "### Installing Python"
-sudo apt-get install -y python python3 python-serial python-setuptools python-gpgme > /dev/null
-sudo apt-get install -y python-matplotlib > /dev/null
+sudo apt-get install -y python python3 python-serial python-setuptools > /dev/null
+sudo apt-get install -y python-gpgme python-matplotlib > /dev/null
 
 echo "### Installing Go"
 sudo apt-get install -y golang > /dev/null
 
+echo "### Installing embedded linux tools"
+sudo apt-get install -y device-tree-compiler debootstrap lzma lzop u-boot-tools
+
 #echo "### Installing x86 toolchain"
-# Necesesary for Xlinx tools
+# Necesesary to run Xilinx tools
 #sudo dpkg --add-architecture i386
 #sudo apt-get -y update
 #sudo apt-get install -y libc6:i386 libncurses5:i386 libstdc++6:i386 zlib1g:i386
 #sudo apt-get install -y libssl-dev
-
-echo "### Installing embedded linux tools"
-sudo apt-get install -y device-tree-compiler debootstrap lzma lzop u-boot-tools
 
 #echo "### Installing Qt5 development libraries"
 #sudo apt-get install qt5-default

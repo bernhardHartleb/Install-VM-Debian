@@ -1,14 +1,15 @@
-## Install Debian in Virtual Box and connect to Zynq development board (FH Joanneum)
+## Install Debian in VirtualBox and connect to Zybo development board (FH Joanneum)
 
- - Install and open Oracle VM VirtualBox 5.2.X from https://www.virtualbox.org/
- - Download Debian from: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-9.4.0-amd64-netinst.iso
+ - Check in the BIOS of your Laptop / PC if the "Virtualization" feature is enabled!
+ - Install and open Oracle VM VirtualBox 6.0.X from https://www.virtualbox.org/
+ - Download Debian from: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-9.8.0-amd64-netinst.iso
  - Click New in VirtualBox
- - Name your new VM “Debian 9.4” choose Type “Linux” and Version “Debian 64Bit”. Click Next.
- - Choose a memory size (RAM). Recommended half of thes system memory. At least 1024MB. Click Next.
+ - Name your new VM “Debian 9.8” choose Type “Linux” and Version “Debian 64Bit”. Click Next.
+ - Choose a memory size (RAM). Recommended half of thes system memory. At least 2048MB. Click Next.
  - Hard Disk: Create a virtual Hard disk now. Click Create.
  - Hard disk file Type: VDI. Click Next.
  - Storage on physical hard disk: Dynamically allocated. Click Next.
- - File location and size: Choose a path, on which the virtual hard disk gets placed. Choose a maximum size. At least 12GB. Click Create.
+ - File location and size: Choose a path, on which the virtual hard disk gets placed. Choose a maximum size. At least 16GB!
  - In your VirtualBox Manager, you now have a VM listed. On the right side, you can see the properties of your VM.
  - Go to Change and add a shared folder to the VM configuration. Select "Automatically mount" and click OK.
  - Click the start Button to boot the VM.
@@ -32,7 +33,7 @@
  - Choose a mirror of the Debian archive: Country in which you are now. If Austria, choose ftp.tu-graz.ac.at
  - Proxy: leave blank. Press Enter.
  - Configuring popularity-contest: make your own decision.
- - Software selection: Select MATE by pressing space bar. Unselect “Debian desktop environment” by pressing space bar. Press Enter.
+ - Software selection: Select MATE by pressing space bar. Unselect “Debian desktop environment”.
  - Wait until full system is installed.
  - Install the GRUB boot loader on a hard disk: Yes, on /dev/sda (ata-VBOX...)
  - Finish the installation: Continue.
@@ -77,22 +78,13 @@ If there are no issues, shutdown the VM create a restore point of the current st
 
 ## Development tools
 
-Find a way to copy the packages.sh file into the virtual machine and run it from the console. Make sure to get the file and not the HTTP webpage! This will install some basic packages required for future labs:
+Find a way to copy the packages.sh file from this repository into the virtual machine and execute it from the console. Make sure to get the file and not the HTTP webpage! This will install some basic packages required for future labs:
 ```sh
 $ ./packages.sh
 ```
 
 Install a cross compiler for "armhf" (ARM hard floating point) to compile Linux applications for the Zybo board.
 ```sh
-$ cd /etc/apt/sources.list.d/
-$ su
-# cat > crosstools.list
-# deb http://emdebian.org/tools/debian/ stretch main
-#
-“press ctrl+D to save file”
-# exit
-$ curl http://emdebian.org/tools/debian/emdebian-toolchain-archive.key | sudo apt-key add -
-
 $ sudo dpkg --add-architecture armhf
 $ sudo apt-get update
 $ sudo apt-get install crossbuild-essential-armhf
@@ -128,7 +120,7 @@ These instructions work assuming we boot the default Linux installation from QSP
 - Open gtkterm.
 - Click Configuration -> Port: Choose /dev/ttyUSB0 at 115200 Baud.
 - Click OK. Press Enter a few times in the black console.
-- The Zynq command prompt appears.
+- The Zybo command prompt appears.
 
 You are now working with Linux on the Zybo board! Do not modify files in the default installation. A custom image on the SDCard should be used for that.
 
