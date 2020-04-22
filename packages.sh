@@ -16,32 +16,35 @@ echo "### Installing version control"
 sudo apt-get install -y git gitk git-gui > /dev/null
 
 echo "### Installing compression tools"
-sudo apt-get install -y zip unzip unrar-free p7zip xarchiver > /dev/null
+sudo apt-get install -y zip unzip unrar-free lzma lzop p7zip xarchiver > /dev/null
 
 echo "### Installing vim"
-sudo apt-get install -y vim vim-gnome exuberant-ctags > /dev/null
+sudo apt-get install -y vim exuberant-ctags > /dev/null
 
-echo "### Installing compiling tools"
-sudo apt-get install -y build-essential gcc gdb autoconf libtool ncurses-dev xutils-dev colorgcc > /dev/null
+echo "### Installing build tools"
+sudo apt-get install -y build-essential gcc gdb autoconf libtool ncurses-dev xutils-dev > /dev/null
 
 echo "### Installing kernel tools"
-sudo apt-get install -y linux-tools bison flex texinfo gnuplot gnuplot-x11 > /dev/null
+sudo apt-get install -y bison flex texinfo gnuplot gnuplot-x11 > /dev/null
 
 echo "### Installing networking tools"
-sudo apt-get install -y net-tools > /dev/null
+sudo apt-get install -y net-tools wireshark > /dev/null
 
-echo "### Installing misc tools"
-sudo apt-get install -y gparted minicom gtkterm > /dev/null
+echo "### Installing terminals"
+sudo apt-get install -y minicom gtkterm > /dev/null
 
-echo "### Installing Python"
+echo "### Installing Python3"
 sudo apt-get install -y python python3 python-serial python-setuptools > /dev/null
-sudo apt-get install -y python-gpgme python-matplotlib > /dev/null
+sudo apt-get install -y python-numpy python-matplotlib > /dev/null
 
 echo "### Installing Go"
 sudo apt-get install -y golang > /dev/null
 
+echo "### Installing benchmark tools"
+sudo apt-get install -y linux-perf htop strace stress > /dev/null
+
 echo "### Installing embedded linux tools"
-sudo apt-get install -y device-tree-compiler debootstrap lzma lzop u-boot-tools
+sudo apt-get install -y device-tree-compiler debootstrap gparted u-boot-tools > /dev/null
 
 #echo "### Installing x86 toolchain"
 # Necesesary to run Xilinx tools
