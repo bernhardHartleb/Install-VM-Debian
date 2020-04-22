@@ -1,4 +1,4 @@
-## Install Debian in VirtualBox and connect to Zybo development board (FH Joanneum)
+## Install Debian in VirtualBox and connect to Zybo development board
 
  - Check and enable Virtualization instructions on your PC! Check with Task Manager and enable in BIOS if disabled.
  - Install and open latest Oracle VirtualBox 6.1.X VM Software from https://www.virtualbox.org/
