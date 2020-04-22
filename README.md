@@ -1,17 +1,17 @@
 ## Install Debian in VirtualBox and connect to Zybo development board (FH Joanneum)
 
- - Check in the BIOS of your Laptop / PC if the "Virtualization" feature is enabled!
- - Install and open Oracle VM VirtualBox 6.0.X from https://www.virtualbox.org/
- - Download Debian from: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-9.8.0-amd64-netinst.iso
+ - Check and enable Virtualization instructions on your PC! Check with Task Manager and enable in BIOS if disabled.
+ - Install and open latest Oracle VirtualBox 6.1.X VM Software from https://www.virtualbox.org/
+ - Download Debian "amd64 iso-cd" image from: https://cdimage.debian.org/debian-cd/10.3.0/amd64/iso-cd/debian-10.3.0-amd64-netinst.iso
  - Click New in VirtualBox
- - Name your new VM “Debian 9.8” choose Type “Linux” and Version “Debian 64Bit”. Click Next.
- - Choose a memory size (RAM). Recommended half of thes system memory. At least 2048MB. Click Next.
+ - Name your new VM “Debian 10.3” choose Type “Linux” and Version “Debian 64Bit”. Click Next.
+ - Choose a memory size (RAM). Recommended half of thes system memory. At least 4096MB. Click Next.
  - Hard Disk: Create a virtual Hard disk now. Click Create.
  - Hard disk file Type: VDI. Click Next.
  - Storage on physical hard disk: Dynamically allocated. Click Next.
  - File location and size: Choose a path, on which the virtual hard disk gets placed. Choose a maximum size. At least 16GB!
  - In your VirtualBox Manager, you now have a VM listed. On the right side, you can see the properties of your VM.
- - Go to Change and add a shared folder to the VM configuration. Select "Automatically mount" and click OK.
+ - Go to Change. Add a new shared folder to the VM configuration named "shared". Select "Automatically mount" and "Permanent".
  - Click the start Button to boot the VM.
  - A window “Select start-up disk” appears. Choose the Debian ISO downloaded before. Click Start.
  - Linux is booting from the install media. Press Enter to start the installation.
@@ -21,7 +21,7 @@
  - Network configuration is automatically detected.
  - Hostname: Your FH login. Is used for reference only.
  - Domain Name: leave empty. Press Continue.
- - Set up users and passwords: Root password: root
+ - Set up a simple username and password. Password for root: root
  - Full Name: [your name], User name for your account: [your choice], password: [your pw]
  - Partition disks: Guided – use entire disk.
  - Select disk to partition: Just one should be available. Choose it.
@@ -30,18 +30,18 @@
  - Partition disks and write changes: Yes
  - Wait until base system is installed.
  - Scan another CD / DVD: No
- - Choose a mirror of the Debian archive: Country in which you are now. If Austria, choose ftp.tu-graz.ac.at
+ - Choose a mirror of the Debian archive: Country in which you are now.
  - Proxy: leave blank. Press Enter.
  - Configuring popularity-contest: make your own decision.
  - Software selection: Select MATE by pressing space bar. Unselect “Debian desktop environment”.
  - Wait until full system is installed.
  - Install the GRUB boot loader on a hard disk: Yes, on /dev/sda (ata-VBOX...)
  - Finish the installation: Continue.
- - If Debian installation appears again: Press Devices -> Optical Drives -> Remove install disk. Reboot the VM.
- - Debian Linux is starting! Your will the the bootloader followed by a login prompt.
- - Login with the username selected during installation.
+ - If the Debian installer starts again: Press Devices -> Optical Drives -> Remove install disk. Reboot the VM.
+ - Debian Linux is starting! You will see the bootloader followed by a login prompt.
+ - Login with your username selected during installation.
 
-Now we setup the debian system.
+Now we can configure the Debian and our desktop environment.
 Go to: System -> Preferences -> Keyboard -> Layouts and check that only your Keyboard layout is in the list.
 Go to: System -> Preferences -> Screensaver and disable it (both checkboxes).
 Find Application -> System Tools -> MATE Terminal and drag & drop the icon to the desktop.
@@ -51,8 +51,8 @@ This will add your user to the sudo and dialout groups, allowing us to work with
 ```sh
 $ su -
 # apt-get install sudo mate
-# adduser <username> sudo
-# adduser <username> dialout
+# adduser [username] sudo
+# adduser [username] dialout
 # reboot
 ```
 
@@ -65,12 +65,12 @@ $ sudo apt-get install gcc gdb build-essential git linux-headers-$(uname -r)
 Confirm and install the selected packages.
 Now insert the guest additions CD:
 Devices -> Insert Guest Additions CD image...
-If we have to start the setup manually:
+Start the setup by hand:
 ```sh
 $ su
 # cd /media/cdrom
 # sh ./VBoxLinuxAdditions.run 
-# adduser <username> vboxsf
+# adduser [username] vboxsf
 # reboot
 ```
 You should now see your shared folder on the desktop.
@@ -78,19 +78,20 @@ If there are no issues, shutdown the VM create a restore point of the current st
 
 ## Development tools
 
-Find a way to copy the packages.sh file from this repository into the virtual machine and execute it from the console. Make sure to get the file and not the HTTP webpage! This will install some basic packages required for future labs:
+Find a way to copy the packages.sh file from this Github repository into the virtual machine and execute it from the console. Make sure to get the file and not the HTTP webpage! This will install some basic packages required for future labs:
 ```sh
+$ chmod +x packages.sh
 $ ./packages.sh
 ```
 
-Install a cross compiler for "armhf" (ARM hard floating point) to compile Linux applications for the Zybo board.
+Install a cross compiler for "armhf" (ARM hard floating point) to compile Linux applications for the Zybo board (Cortex-A9).
 ```sh
 $ sudo dpkg --add-architecture armhf
 $ sudo apt-get update
 $ sudo apt-get install crossbuild-essential-armhf
 ```
 
-Install a x86 toolchain (32bit) necesesary for Xilinx tools and BSP kernel
+(NOT REQUIRED) Install a x86 toolchain (32bit) necesesary for Xilinx tools and BSP kernel
 ```sh
 $ sudo dpkg --add-architecture i386
 $ sudo apt-get update
@@ -102,11 +103,11 @@ $ sudo apt-get install libssl-dev
 
 Optimize your VM to save time in the future:
  - Enable the shared clipboard between Host and Guest.
- - Assign a 2nd CPU to the VM if available.
- - Assign more than 1GB of RAM.
+ - Assign a 2nd CPU to the VM.
+ - Assign more than 2GB of RAM.
  - Activate 3D acceleration and increase graphics memory to 64MB.
  - Find the best display resolution and scaling mode for your work.
- - Discover the MATE desktop.
+ - Discover the simple MATE desktop.
 
 ## Connect to the target via serial console
 
@@ -116,11 +117,12 @@ These instructions work assuming we boot the default Linux installation from QSP
 - Change the boot-mode jumpers to boot from QSPI.
 - Connect the Zybo board via the mircoUSB connector to your host PC. This connection powers the board and acts as console at the same time.
 - Wait until your Windows host finishes installing drivers.
-- Click on Devices -> USB -> Silicon Labs CP2014 USB to UART Bridge. This forwards the USB device to the VM.
+- Click on Devices -> USB -> Digilent Adept USB Device. This forwards the USB serial convert to the VM.
 - Open gtkterm.
-- Click Configuration -> Port: Choose /dev/ttyUSB0 at 115200 Baud.
+- Click Configuration -> Choose /dev/ttyUSB1 at 115200 Baud.
 - Click OK. Press Enter a few times in the black console.
 - The Zybo command prompt appears.
+- If this works then select in Configuration -> Save configuration -> default
 
 You are now working with Linux on the Zybo board! Do not modify files in the default installation. A custom image on the SDCard should be used for that.
 
