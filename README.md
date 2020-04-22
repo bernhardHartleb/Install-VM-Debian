@@ -118,6 +118,7 @@ These instructions work assuming we boot the default Linux installation from QSP
 - Connect the Zybo board via the mircoUSB connector to your host PC. This connection powers the board and acts as console at the same time.
 - Wait until your Windows host finishes installing drivers.
 - Click on Devices -> USB -> Digilent Adept USB Device. This forwards the USB serial convert to the VM.
+- USB forwarding can be made automatic by adding the device in the USB configuration dialog.
 - Open gtkterm.
 - Click Configuration -> Choose /dev/ttyUSB1 at 115200 Baud.
 - Click OK. Press Enter a few times in the black console.
