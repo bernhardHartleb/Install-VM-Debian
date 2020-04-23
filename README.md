@@ -59,7 +59,7 @@ $ su -
 The VirtualBox guest additions are drivers required for seamless graphics, mouse input, shared clipboard and shared folders.
 The following build tools are needed to install guest additions:
 ```sh
-$ sudo apt-get install gcc gdb build-essential git linux-headers-$(uname -r)
+$ sudo apt-get install gcc gdb build-essential dkms linux-headers-$(uname -r)
 ```
 
 Confirm and install the selected packages.

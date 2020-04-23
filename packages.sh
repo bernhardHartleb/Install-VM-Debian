@@ -25,10 +25,10 @@ echo "### Installing build tools"
 sudo apt-get install -y build-essential gcc gdb autoconf libtool ncurses-dev xutils-dev > /dev/null
 
 echo "### Installing kernel tools"
-sudo apt-get install -y bison flex texinfo gnuplot gnuplot-x11 > /dev/null
+sudo apt-get install -y dkms bison flex texinfo gnuplot gnuplot-x11 > /dev/null
 
 echo "### Installing networking tools"
-sudo apt-get install -y net-tools wireshark > /dev/null
+sudo apt-get install -f -y net-tools wireshark > /dev/null
 
 echo "### Installing terminals"
 sudo apt-get install -y minicom gtkterm > /dev/null
