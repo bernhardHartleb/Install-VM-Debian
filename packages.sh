@@ -1,9 +1,8 @@
 #!/bin/bash
-# Bernhard Hartleb 2018
+# Bernhard Hartleb 2020
 
 sudo apt-get -y update
 sudo apt-get -y upgrade
-sudo apt-get -y dist-upgrade
 
 echo "### Installing basic tools"
 # Allows us to add debian repositories
@@ -29,9 +28,11 @@ sudo apt-get install -y dkms bison flex texinfo gnuplot gnuplot-x11 > /dev/null
 
 echo "### Installing networking tools"
 sudo apt-get install -f -y net-tools wireshark > /dev/null
+sudo adduser $USER wireshark
 
 echo "### Installing terminals"
 sudo apt-get install -y minicom gtkterm > /dev/null
+sudo adduser $USER dialout
 
 echo "### Installing Python3"
 sudo apt-get install -y python python3 python-serial python-setuptools > /dev/null
