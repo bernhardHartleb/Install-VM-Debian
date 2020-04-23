@@ -27,7 +27,7 @@ echo "### Installing kernel tools"
 sudo apt-get install -y dkms bison flex texinfo gnuplot gnuplot-x11 > /dev/null
 
 echo "### Installing networking tools"
-sudo apt-get install -f -y net-tools wireshark > /dev/null
+sudo apt-get install -y net-tools wireshark-gtk > /dev/null
 sudo adduser $USER wireshark
 
 echo "### Installing terminals"
