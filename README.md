@@ -67,7 +67,7 @@ Now insert the guest additions CD:
 Devices -> Insert Guest Additions CD image...
 Start the setup by hand:
 ```sh
-$ su
+$ su -
 # cd /media/cdrom
 # sh ./VBoxLinuxAdditions.run 
 # adduser [username] vboxsf
