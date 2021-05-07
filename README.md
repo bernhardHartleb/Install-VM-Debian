@@ -2,26 +2,33 @@
 
  - Check and enable Virtualization instructions on your PC! Check with Task Manager and enable in BIOS if disabled.
  - Install and open latest Oracle VirtualBox 6.1.X VM Software from https://www.virtualbox.org/
- - Download Debian "amd64 iso-cd" image from: https://cdimage.debian.org/debian-cd/10.4.0/amd64/iso-cd/debian-10.4.0-amd64-netinst.iso
+ - Download Debian "amd64 iso-cd" image from: https://cdimage.debian.org/debian-cd/10.9.0/amd64/iso-cd/debian-10.9.0-amd64-netinst.iso
  - Click New in VirtualBox
- - Name your new VM “Debian 10.3” choose Type “Linux” and Version “Debian 64Bit”. Click Next.
- - Choose a memory size (RAM). Recommended half of thes system memory. At least 4096MB. Click Next.
- - Hard Disk: Create a virtual Hard disk now. Click Create.
- - Hard disk file Type: VDI. Click Next.
- - Storage on physical hard disk: Dynamically allocated. Click Next.
- - File location and size: Choose a path, on which the virtual hard disk gets placed. Choose a maximum size. At least 16GB!
+ - Name your new VM “Debian 10.9” choose Type “Linux” and Version “Debian 64Bit”.
+ - Choose a memory size (RAM). Recommended half of thes system memory. At least 4096MB.
+ - Hard Disk: Create a virtual Hard disk.
+ - Click Create.
+ - File location and size: Choose a path at which the virtual hard disk is stored. 
+ - Hard disk file Type: VDI.
+ - Storage on physical hard disk: Dynamically allocated.
+ - Choose a maximum size. Minimum 8GB! Make sure you have at least 2GB free disk space initially.
+ - Click Create.
  - In your VirtualBox Manager, you now have a VM listed. On the right side, you can see the properties of your VM.
- - Go to Change. Add a new shared folder to the VM configuration named "shared". Select "Automatically mount" and "Permanent".
+ - Click Change. Add a new shared folder to the VM configuration folder name "shared". 
+ - Create a new shared directory in your lecture folder and select it as path.
+ - Select "Automatically mount" and click OK.
  - Click the start Button to boot the VM.
  - A window “Select start-up disk” appears. Choose the Debian ISO downloaded before. Click Start.
- - Linux is booting from the install media. Press Enter to start the installation.
- - Choose your language (English) and press Enter
- - Select your location and press Enter
- - Configure the keyboard: Select your keyboard standard.
+ - Linux is booting from the install media. Press Enter to start the Graphical installation.
+ - Choose your language (English) and press Enter.
+ - Select your location and press Enter.
+ - Keep the default locale en_US.UTF-8
+ - Select your keyboard standard.
  - Network configuration is automatically detected.
  - Hostname: Your FH login. Is used for reference only.
  - Domain Name: leave empty. Press Continue.
- - Set up a simple username and password. Password for root: root
+ - Password for root: root
+ - Set up a simple username and password:
  - Full Name: [your name], User name for your account: [your choice], password: [your pw]
  - Partition disks: Guided – use entire disk.
  - Select disk to partition: Just one should be available. Choose it.
@@ -33,7 +40,7 @@
  - Choose a mirror of the Debian archive: Country in which you are now.
  - Proxy: leave blank. Press Enter.
  - Configuring popularity-contest: make your own decision.
- - Software selection: Select MATE by pressing space bar. Unselect “Debian desktop environment”.
+ - Software selection: Select MATE by pressing space bar. Unselect “Debian desktop environment”!
  - Wait until full system is installed.
  - Install the GRUB boot loader on a hard disk: Yes, on /dev/sda (ata-VBOX...)
  - Finish the installation: Continue.
