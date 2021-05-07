@@ -26,10 +26,6 @@ sudo apt-get install -y build-essential gcc gdb autoconf libtool ncurses-dev xut
 echo "### Installing kernel tools"
 sudo apt-get install -y dkms bison flex texinfo gnuplot gnuplot-x11 > /dev/null
 
-echo "### Installing networking tools"
-sudo apt-get install -y net-tools wireshark-gtk > /dev/null
-sudo adduser $USER wireshark
-
 echo "### Installing terminals"
 sudo apt-get install -y minicom gtkterm > /dev/null
 sudo adduser $USER dialout
@@ -46,6 +42,10 @@ sudo apt-get install -y linux-perf htop strace stress > /dev/null
 
 echo "### Installing embedded linux tools"
 sudo apt-get install -y device-tree-compiler debootstrap gparted u-boot-tools > /dev/null
+
+echo "### Installing networking tools"
+sudo apt-get install -y net-tools wireshark-gtk > /dev/null
+sudo adduser $USER wireshark
 
 #echo "### Installing x86 toolchain"
 # Necesesary to run Xilinx tools
