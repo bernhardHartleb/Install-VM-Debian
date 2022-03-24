@@ -2,9 +2,9 @@
 
  - Check and enable Virtualization instructions on your PC! Check with Task Manager and enable in BIOS if disabled.
  - Install and open latest Oracle VirtualBox 6.1.X VM Software from https://www.virtualbox.org/
- - Download Debian "amd64 iso-cd" image from: https://cdimage.debian.org/debian-cd/10.9.0/amd64/iso-cd/debian-10.9.0-amd64-netinst.iso
+ - Download Debian "amd64 iso-cd" image from: https://cdimage.debian.org/debian-cd/11.2.0/amd64/iso-cd/debian-11.2.0-amd64-netinst.iso
  - Click New in VirtualBox
- - Name your new VM “Debian 10.9” choose Type “Linux” and Version “Debian 64Bit”.
+ - Name your new VM “Debian 11.2” choose Type “Linux” and Version “Debian 64Bit”.
  - Choose a memory size (RAM). Recommended half of thes system memory. At least 4096MB.
  - Hard Disk: Create a virtual Hard disk.
  - Click Create.
