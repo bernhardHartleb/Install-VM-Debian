@@ -149,17 +149,17 @@ $ echo -e "auto enp0s8\niface enp0s8 inet static\naddress 192.168.1.200\nnetmask
 After a restarted of the VM the Zybo board should now be available in your LAN.
 To connect to the board, use the following command:
 ```sh
-$ ssh root@192.168.1.103
+$ ssh debian@192.168.1.103
 ```
 
 To transfer files manually:
 ```sh
-$ scp hello-arm root@192.168.1.103:/root/
+$ scp hello-arm debian@192.168.1.103:
 ```
 
 To view the file system on the board the following command can be used:
 ```sh
-$ caja "sftp://root@192.168.1.103/root"
+$ caja "sftp://debian@192.168.1.103/home/debian/"
 ```
 
 As an additional option, an internet connection on the Zybo board can get established by executing the following commands as root.
