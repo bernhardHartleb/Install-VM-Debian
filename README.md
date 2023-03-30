@@ -52,12 +52,12 @@
  - Debian Linux is starting! You will see the bootloader followed by a login prompt.
  - Login with your username selected during installation.
 
-Now we can configure the Debian and our desktop environment.
-Go to: System -> Preferences -> Hardware -> Keyboard -> Layouts and check that your Keyboard layout is in the list.
-Go to: System -> Preferences -> Look and Feel -> Screensaver and disable it (both checkboxes).
+Now we can configure the Debian and our desktop environment.  
+Go to: System -> Preferences -> Hardware -> Keyboard -> Layouts and check that your Keyboard layout is in the list.  
+Go to: System -> Preferences -> Look and Feel -> Screensaver and disable it (both checkboxes).  
 Find Application -> System Tools -> MATE Terminal and drag & drop the icon to the desktop.
 
-Open the terminal from Applications -> Systems and Tools -> META Terminal and run the following commands.
+Open the terminal from Applications -> Systems and Tools -> META Terminal and run the following commands.  
 This will add your user to the sudo and dialout groups, allowing us to work without beeing root in the future.
 ```sh
 $ su -
@@ -116,21 +116,20 @@ When everything works properly, consider shutting down the VM to create a restor
 
 ## Connect to the target via serial console
 
-The most basic access to any embedded system is often the serial console. Since serial ports went mostly extinct, USB is used to transport the serial data instead.
-These instructions work assuming we boot the default Linux installation from QSPI flash.
+The most basic access to any embedded system is often the serial console. Since serial ports went mostly extinct, USB is used to transport the serial data instead. These instructions work assuming we boot the default Linux installation from QSPI flash, but also from SD-card images.
 
-- Change the boot-mode jumpers to boot from QSPI.
+- Change the boot-mode jumpers to boot from SD-card and make sure it is inserted.
 - Connect the Zybo board via the mircoUSB connector to your host PC. This connection powers the board and acts as console at the same time.
 - Wait until your Windows host finishes installing drivers.
 - Click on Devices -> USB -> Digilent Adept USB Device. This forwards the USB serial convert to the VM.
 - USB forwarding can be made automatic by adding the device in the USB configuration dialog.
-- Open gtkterm.
+- Open gtkterm, via Applications -> Accessories -> Serial port terminal
 - Click Configuration -> Choose /dev/ttyUSB1 at 115200 Baud.
 - Click OK. Press Enter a few times in the black console.
 - The Zybo command prompt appears.
 - If this works then select in Configuration -> Save configuration -> default
 
-You are now working with Linux on the Zybo board! Do not modify files in the default installation. A custom image on the SDCard should be used for that.
+You are now working with Linux on the Zybo board! A custom image on the SD-card should be used for all exercises.
 
 ## Connect to the target via network
 
