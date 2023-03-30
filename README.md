@@ -1,9 +1,11 @@
 
 ## Install Debian in VirtualBox and connect to Zybo development board
 
- - Check and enable Virtualization instructions on your PC! Check with Task Manager and enable in BIOS if disabled.
+ - Check Virtualization instructions by opening the CPU performance view of Task Manager.
+ - Enable Virtualization support in UEFI if disabled.
  - Install and open latest Oracle VirtualBox 6.1.X VM Software from https://www.virtualbox.org/
- - Download Debian "amd64 iso-cd" image from: https://cdimage.debian.org/debian-cd/11.6.0/amd64/iso-cd/debian-11.6.0-amd64-netinst.iso
+ - Download Debian "amd64 iso-cd" image from:
+   https://cdimage.debian.org/debian-cd/11.6.0/amd64/iso-cd/debian-11.6.0-amd64-netinst.iso
  - Create new Machine in VirtualBox.
  - Name your new VM “Debian 11.6” choose Type “Linux” and Version “Debian 64Bit”.
  - Choose a memory size (RAM). Recommended half of thes system memory. At least 4096MB.
