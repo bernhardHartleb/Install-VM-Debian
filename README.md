@@ -84,12 +84,13 @@ $ su -
 # adduser [username] vboxsf
 # reboot
 ```
-After restart and login you should see your shared folder on the desktop.
+After restart and login you should see your shared folder on the desktop.  
 The size of the Linux desktop now adjusts when resizing the VM window.
 
 ## Development tools
 
-Find a way to copy the packages.sh file from this Github repository into the VM and execute it from the console. Make sure to get the plain file and not the HTML webpage! This will install some basic packages required for future labs:
+Find a way to copy the packages.sh file from this Github repository into the VM and execute it from the console. Make sure to get the plain file and not the HTML webpage!  
+This will install some basic packages required for future labs:
 ```sh
 $ chmod +x packages.sh
 $ ./packages.sh
@@ -116,7 +117,7 @@ When everything works properly, consider shutting down the VM to create a restor
 
 ## Connect to the target via serial console
 
-The most basic access to any embedded system is often the serial console. Since serial ports went mostly extinct, USB is used to transport the serial data instead. These instructions work assuming we boot the default Linux installation from QSPI flash, but also from SD-card images.
+The most basic access to any embedded system is often the serial console. Since serial ports went mostly extinct, USB is used to transport the serial data instead.
 
 - Change the boot-mode jumpers to boot from SD-card and make sure it is inserted.
 - Connect the Zybo board via the mircoUSB connector to your host PC. This connection powers the board and acts as console at the same time.
@@ -129,7 +130,8 @@ The most basic access to any embedded system is often the serial console. Since 
 - The Zybo command prompt appears.
 - If this works then select in Configuration -> Save configuration -> default
 
-You are now working with Linux on the Zybo board! A custom image on the SD-card should be used for all exercises.
+You are now working with Linux on the Zybo board!  
+A custom image on the SD-card should be used for all exercises.
 
 ## Connect to the target via network
 
