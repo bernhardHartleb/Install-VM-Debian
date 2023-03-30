@@ -31,8 +31,8 @@ sudo apt-get install -y minicom gtkterm > /dev/null
 sudo adduser $USER dialout
 
 echo "### Installing Python3"
-sudo apt-get install -y python python3 python-serial python-setuptools > /dev/null
-sudo apt-get install -y python-numpy python-matplotlib > /dev/null
+sudo apt-get install -y python3 python3-serial python3-setuptools > /dev/null
+sudo apt-get install -y python3-numpy python3-matplotlib > /dev/null
 
 echo "### Installing Go"
 sudo apt-get install -y golang > /dev/null
@@ -44,6 +44,7 @@ echo "### Installing embedded linux tools"
 sudo apt-get install -y device-tree-compiler debootstrap gparted u-boot-tools > /dev/null
 
 echo "### Installing networking tools"
+echo "wireshark-common wireshark-common/install-setuid boolean true" | sudo debconf-set-selections
 sudo apt-get install -y net-tools wireshark-gtk > /dev/null
 sudo adduser $USER wireshark
 
