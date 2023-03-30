@@ -72,10 +72,10 @@ The following build tools are needed to install guest additions:
 $ su -c "apt-get install gcc gdb build-essential dkms linux-headers-$(uname -r)"
 ```
 
-Confirm and install the specified packages.
-Afterwards insert the guest additions CD:
-VirtualBox -> Devices -> Insert Guest Additions...
-MATE -> Places -> VBox_GAs_...
+Confirm and install the specified packages.  
+Afterwards insert the guest additions CD:  
+VirtualBox -> Devices -> Insert Guest Additions...  
+MATE -> Places -> VBox_GAs_...  
 Start the setup by hand in a new terminal:
 ```sh
 $ su -
