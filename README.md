@@ -1,35 +1,36 @@
+
 ## Install Debian in VirtualBox and connect to Zybo development board
 
  - Check and enable Virtualization instructions on your PC! Check with Task Manager and enable in BIOS if disabled.
  - Install and open latest Oracle VirtualBox 6.1.X VM Software from https://www.virtualbox.org/
  - Download Debian "amd64 iso-cd" image from: https://cdimage.debian.org/debian-cd/11.6.0/amd64/iso-cd/debian-11.6.0-amd64-netinst.iso
- - Click New in VirtualBox
+ - Create new Machine in VirtualBox.
  - Name your new VM “Debian 11.6” choose Type “Linux” and Version “Debian 64Bit”.
  - Choose a memory size (RAM). Recommended half of thes system memory. At least 4096MB.
- - Hard Disk: Create a virtual Hard disk.
- - Click Create.
- - File location and size: Choose a path at which the virtual hard disk is stored. 
+ - Hard Disk: Create a virtual Hard disk with following settings:
+ - File location: Choose a path at which the virtual hard disk is stored.
+ - Choose a maximum file size of at least 10GB! Make sure you have at least 4GB free disk space initially.
  - Hard disk file Type: VDI.
  - Storage on physical hard disk: Dynamically allocated.
- - Choose a maximum size. Minimum 8GB! Make sure you have at least 2GB free disk space initially.
  - Click Create.
  - In your VirtualBox Manager, you now have a VM listed. On the right side, you can see the properties of your VM.
  - Click Change. Add a new shared folder to the VM configuration folder name "shared". 
  - Create a new shared directory in your lecture folder and select it as path.
  - Select "Automatically mount" and click OK.
+ - Basic setup of your VM is complete, we come back to it later.
  - Click the start Button to boot the VM.
- - A window “Select start-up disk” appears. Choose the Debian ISO downloaded before. Click Start.
+ - A window “Select media for start-up” appears. Add the Debian ISO downloaded before and select it. Click Start.
  - Linux is booting from the install media. Press Enter to start the Graphical installation.
  - Choose your language (English) and press Enter.
- - Select your location and press Enter.
+ - Select your location (other -> Europe -> Austria) and press Enter.
  - Keep the default locale en_US.UTF-8
- - Select your keyboard standard.
+ - Select your keyboard configuration: German for QWERTZ keyboards.
  - Network configuration is automatically detected.
- - Hostname: Your FH login. Is used for reference only.
+ - Hostname: Your FH login (not email). This is used for reference only.
  - Domain Name: leave empty. Press Continue.
  - Password for root: root
  - Set up a simple username and password:
- - Full Name: [your name], User name for your account: [your choice], password: [your pw]
+ - Full Name: [your name], User name for your account: [your choice], password: [simple pw]
  - Partition disks: Guided – use entire disk.
  - Select disk to partition: Just one should be available. Choose it.
  - Partition disks: All files in one partition
@@ -39,8 +40,9 @@
  - Scan another CD / DVD: No
  - Choose a mirror of the Debian archive: Country in which you are now.
  - Proxy: leave blank. Press Enter.
- - Configuring popularity-contest: make your own decision.
- - Software selection: Select MATE by pressing space bar. Unselect “Debian desktop environment”!
+ - Wait until package manager is updated.
+ - Configuring popularity-contest: No
+ - Software selection: Unselect "GNOME"! Select "MATE" instead.
  - Wait until full system is installed.
  - Install the GRUB boot loader on a hard disk: Yes, on /dev/sda (ata-VBOX...)
  - Finish the installation: Continue.
@@ -49,30 +51,30 @@
  - Login with your username selected during installation.
 
 Now we can configure the Debian and our desktop environment.
-Go to: System -> Preferences -> Keyboard -> Layouts and check that only your Keyboard layout is in the list.
-Go to: System -> Preferences -> Screensaver and disable it (both checkboxes).
+Go to: System -> Preferences -> Hardware -> Keyboard -> Layouts and check that your Keyboard layout is in the list.
+Go to: System -> Preferences -> Look and Feel -> Screensaver and disable it (both checkboxes).
 Find Application -> System Tools -> MATE Terminal and drag & drop the icon to the desktop.
 
-Open the terminal and run the following commands:
+Open the terminal from Applications -> Systems and Tools -> META Terminal and run the following commands.
 This will add your user to the sudo and dialout groups, allowing us to work without beeing root in the future.
 ```sh
 $ su -
-# apt-get install sudo mate
 # adduser [username] sudo
 # adduser [username] dialout
-# reboot
+# exit
 ```
 
 The VirtualBox guest additions are drivers required for seamless graphics, mouse input, shared clipboard and shared folders.
 The following build tools are needed to install guest additions:
 ```sh
-$ sudo apt-get install gcc gdb build-essential dkms linux-headers-$(uname -r)
+$ su -c "apt-get install gcc gdb build-essential dkms linux-headers-$(uname -r)"
 ```
 
-Confirm and install the selected packages.
-Now insert the guest additions CD:
-Devices -> Insert Guest Additions CD image...
-Start the setup by hand:
+Confirm and install the specified packages.
+Afterwards insert the guest additions CD:
+VirtualBox -> Devices -> Insert Guest Additions...
+MATE -> Places -> VBox_GAs_...
+Start the setup by hand in a new terminal:
 ```sh
 $ su -
 # cd /media/cdrom
@@ -80,12 +82,12 @@ $ su -
 # adduser [username] vboxsf
 # reboot
 ```
-You should now see your shared folder on the desktop.
-If there are no issues, shutdown the VM create a restore point of the current state.
+After restart and login you should see your shared folder on the desktop.
+The size of the Linux desktop now adjusts when resizing the VM window.
 
 ## Development tools
 
-Find a way to copy the packages.sh file from this Github repository into the virtual machine and execute it from the console. Make sure to get the file and not the HTTP webpage! This will install some basic packages required for future labs:
+Find a way to copy the packages.sh file from this Github repository into the VM and execute it from the console. Make sure to get the plain file and not the HTML webpage! This will install some basic packages required for future labs:
 ```sh
 $ chmod +x packages.sh
 $ ./packages.sh
@@ -103,10 +105,12 @@ $ sudo apt-get install crossbuild-essential-armhf
 Optimize your VM to save time in the future:
  - Enable the shared clipboard between Host and Guest.
  - Assign a 2nd CPU to the VM.
- - Assign more than 2GB of RAM.
+ - Assign more than 4GB of RAM.
  - Activate 3D acceleration and increase graphics memory to 64MB.
  - Find the best display resolution and scaling mode for your work.
  - Discover the simple MATE desktop.
+
+When everything works properly, consider shutting down the VM to create a restore point of the current state.
 
 ## Connect to the target via serial console
 
