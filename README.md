@@ -79,7 +79,7 @@ MATE -> Places -> VBox_GAs_...
 Start the setup by hand in a new terminal:
 ```sh
 $ su -
-# cd /media/cdrom
+# cd /media/cdrom0
 # sh ./VBoxLinuxAdditions.run 
 # adduser [username] vboxsf
 # reboot
