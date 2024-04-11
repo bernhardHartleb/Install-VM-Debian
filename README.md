@@ -3,48 +3,54 @@
 
  - Check Virtualization instructions by opening the CPU performance view of Task Manager.
  - Enable Virtualization support in UEFI if disabled.
- - Install and open latest Oracle VirtualBox 6.1.X VM Software from https://www.virtualbox.org/
+ - Install and open the latest Oracle VirtualBox 7.0.X VM Software from https://www.virtualbox.org/
  - Download Debian "amd64 iso-cd" image from:
-   https://cdimage.debian.org/debian-cd/11.6.0/amd64/iso-cd/debian-11.6.0-amd64-netinst.iso
+   https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.5.0-amd64-netinst.iso
  - Create new Machine in VirtualBox.
- - Name your new VM “Debian 11.6” choose Type “Linux” and Version “Debian 64Bit”.
- - Choose a memory size (RAM). Recommended half of thes system memory. At least 4096MB.
- - Hard Disk: Create a virtual Hard disk with following settings:
- - File location: Choose a path at which the virtual hard disk is stored.
- - Choose a maximum file size of at least 10GB! Make sure you have at least 4GB free disk space initially.
+ - Name your new VM “Debian 12.5” choose Type “Linux” and Version “Debian 12 (64-Bit)”.
+ - Select the ISO Image file you downloaded.
+ - Select "Skip Unattended Installation" because we are making extra choices.
+ - Under Hardware, choose a memory size (RAM). At least 4096MB is recommended.
+ - Increase the number of processors to half the available ones.
+ - Under Hard Disk: Create a virtual Hard disk with following settings:
+ - File location: Choose a path with enough space at which the virtual hard disk is stored.
+ - Choose a maximum size of at least 12GB or more! Make sure you 4GB of free disk space initially.
  - Hard disk file Type: VDI.
- - Storage on physical hard disk: Dynamically allocated.
- - Click Create.
- - In your VirtualBox Manager, you now have a VM listed. On the right side, you can see the properties of your VM.
- - Click Change. Add a new shared folder to the VM configuration folder name "shared". 
- - Create a new shared directory in your lecture folder and select it as path.
- - Select "Automatically mount" and click OK.
- - Basic setup of your VM is complete, we come back to it later.
+ - Click Finish.
+ - In your VirtualBox Manager, you now have a VM listed. On the right side you can see the properties.
+ - Click Setting and go to Shared Folders.
+ - With the plus icon, add a new shared folder to the VM configuration.
+ - Create a new shared directory in your lecture folder and select it as Path.
+ - Select "Auto-mount" and click OK. Mount point is left empty.
+ - Under Display, increase the Video Memory to 32MB.
+ - The basic setup of your VM is complete, we come back to it later.
  - Click the start Button to boot the VM.
- - A window “Select media for start-up” appears. Add the Debian ISO downloaded before and select it. Click Start.
- - Linux is booting from the install media. Press Enter to start the Graphical installation.
+ - Linux is booting from the install Debian CD iso file.
+ - If the VM screen is very small, you can scale in the menu under View -> Virtual Screen.
+ - Press Enter to start the Graphical installation.
  - Choose your language (English) and press Enter.
  - Select your location (other -> Europe -> Austria) and press Enter.
  - Keep the default locale en_US.UTF-8
  - Select your keyboard configuration: German for QWERTZ keyboards.
  - Network configuration is automatically detected.
- - Hostname: Your FH login (not email). This is used for reference only.
+ - Hostname: Your FH username (not email). This is used for reference only.
  - Domain Name: leave empty. Press Continue.
  - Password for root: root
- - Set up a simple username and password:
- - Full Name: [your name], User name for your account: [your choice], password: [simple pw]
+ - Set up a simple username and password, you will type it often:
+ - Full Name: [your name], User name for your account: [your forename], password: [your pw]
  - Partition disks: Guided – use entire disk.
  - Select disk to partition: Just one should be available. Choose it.
  - Partition disks: All files in one partition
  - Finish partitioning and write changes to disk
  - Partition disks and write changes: Yes
- - Wait until base system is installed.
- - Scan another CD / DVD: No
- - Choose a mirror of the Debian archive: Country in which you are now.
+ - Wait until the base system is installed.
+ - Scan extra installation media: No
+ - Choose a mirror of the Debian archive: Austria
+ - Choose the default mirror: deb.debian.org
  - Proxy: leave blank. Press Enter.
- - Wait until package manager is updated.
+ - Wait until the package manager is done updating.
  - Configuring popularity-contest: No
- - Software selection: Unselect "GNOME"! Select "MATE" instead.
+ - Desktop environment selection: Unselect "GNOME". Select "MATE" instead.
  - Wait until full system is installed.
  - Install the GRUB boot loader on a hard disk: Yes, on /dev/sda (ata-VBOX...)
  - Finish the installation: Continue.
@@ -69,22 +75,25 @@ $ su -
 The VirtualBox guest additions are drivers required for seamless graphics, mouse input, shared clipboard and shared folders.
 The following build tools are needed to install guest additions:
 ```sh
-$ su -c "apt-get install gcc gdb build-essential dkms linux-headers-$(uname -r)"
+$ su -
+# apt-get install gcc gdb build-essential dkms
+# exit
 ```
 
 Confirm and install the specified packages.  
 Afterwards insert the guest additions CD:  
-VirtualBox -> Devices -> Insert Guest Additions...  
+VirtualBox -> Devices -> Insert Guest Additions CD...
 MATE -> Places -> VBox_GAs_...  
 Start the setup by hand in a new terminal:
 ```sh
 $ su -
 # cd /media/cdrom0
+# ls -1
 # sh ./VBoxLinuxAdditions.run 
 # adduser [username] vboxsf
-# reboot
+# poweroff
 ```
-After restart and login you should see your shared folder on the desktop.  
+After starting again and login you should see your shared folder on the desktop.
 The size of the Linux desktop now adjusts when resizing the VM window.
 
 ## Development tools
@@ -105,13 +114,14 @@ $ sudo apt-get install crossbuild-essential-armhf
 
 ## VM optimization
 
-Optimize your VM to save time in the future:
- - Enable the shared clipboard between Host and Guest.
- - Assign a 2nd CPU to the VM.
+Optimize your VM to work effective in the future.
+Ensure the following things are set:
+ - Assign 2 or more CPUs to the VM.
  - Assign more than 4GB of RAM.
- - Activate 3D acceleration and increase graphics memory to 64MB.
- - Find the best display resolution and scaling mode for your work.
- - Discover the simple MATE desktop.
+ - Increase graphics memory to 32MB.
+ - Enable the shared clipboard between Host and Guest.
+ - Find the best display resolution and scaling mode for your screen.
+ - Add shortcuts to often used applications to the desktop.
 
 When everything works properly, consider shutting down the VM to create a restore point of the current state.
 
