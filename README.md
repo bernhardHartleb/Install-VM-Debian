@@ -1,20 +1,21 @@
 
 ## Install Debian in VirtualBox and connect to Zybo development board
 
- - Check Virtualization instructions by opening the CPU performance view of Task Manager.
+ - Check Virtualization instructions by opening the CPU performance view of Windows Task Manager.
  - Enable Virtualization support in UEFI if disabled.
- - Install and open the latest Oracle VirtualBox 7.0.X VM Software from https://www.virtualbox.org/
+ - Install and open the latest Oracle VirtualBox 7.2.X VM Software from https://www.virtualbox.org/
  - Download Debian "amd64 iso-cd" image from:
-   https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.5.0-amd64-netinst.iso
+   https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-13.1.0-amd64-netinst.iso
  - Create new Machine in VirtualBox.
- - Name your new VM “Debian 12.5” choose Type “Linux” and Version “Debian 12 (64-Bit)”.
  - Select the ISO Image file you downloaded.
- - Select "Skip Unattended Installation" because we are making extra choices.
- - Under Hardware, choose a memory size (RAM). At least 4096MB is recommended.
+ - Disable the checkbox for Unattended Installation. We are making extra choices.
+ - Name your new VM “Debian 13.1” choose Type “Linux” and OS “Debian (64-Bit)”.
+ - Under Virtual Hardware, choose a memory size (RAM). At least 4096MB is recommended.
  - Increase the number of processors to half the available ones.
+ - Enable Use UEFI.
  - Under Hard Disk: Create a virtual Hard disk with following settings:
- - File location: Choose a path with enough space at which the virtual hard disk is stored.
- - Choose a maximum size of at least 12GB or more! Make sure you 4GB of free disk space initially.
+ - File location: Choose a local path with enough space at which the virtual hard disk is stored.
+ - Choose a maximum disk size of at least 12GB! Make sure you have 4GB of free disk space initially.
  - Hard disk file Type: VDI.
  - Click Finish.
  - In your VirtualBox Manager, you now have a VM listed. On the right side you can see the properties.
@@ -37,11 +38,11 @@
  - Domain Name: leave empty. Press Continue.
  - Password for root: root
  - Set up a simple username and password, you will type it often:
- - Full Name: [your name], User name for your account: [your forename], password: [your pw]
+ - Full Name: [your name], User name for your account: [your alias], password: [your pw]
  - Partition disks: Guided – use entire disk.
  - Select disk to partition: Just one should be available. Choose it.
  - Partition disks: All files in one partition
- - Finish partitioning and write changes to disk
+ - You are present with a list of partitions. Select Finish partitioning and write changes to disk.
  - Partition disks and write changes: Yes
  - Wait until the base system is installed.
  - Scan extra installation media: No
@@ -51,8 +52,8 @@
  - Wait until the package manager is done updating.
  - Configuring popularity-contest: No
  - Desktop environment selection: Unselect "GNOME". Select "MATE" instead.
- - Wait until full system is installed.
- - Install the GRUB boot loader on a hard disk: Yes, on /dev/sda (ata-VBOX...)
+ - Wait until the full system is installed.
+ - If asked, install the GRUB boot loader on a hard disk: Yes, on /dev/sda (ata-VBOX...)
  - Finish the installation: Continue.
  - If the Debian installer starts again: Press Devices -> Optical Drives -> Remove install disk. Reboot the VM.
  - Debian Linux is starting! You will see the bootloader followed by a login prompt.
@@ -63,7 +64,9 @@ Go to: System -> Preferences -> Hardware -> Keyboard -> Layouts and check that y
 Go to: System -> Preferences -> Look and Feel -> Screensaver and disable it (both checkboxes).  
 Find Application -> System Tools -> MATE Terminal and drag & drop the icon to the desktop.
 
-Open the terminal from Applications -> Systems and Tools -> META Terminal and run the following commands.  
+Open the terminal from Applications -> Systems and Tools -> META Terminal and run the following commands.
+Do not type the leading characters. $ indicates a normal user shell, while # shows a root shell.
+Fill in the placeholder with your own username.
 This will add your user to the sudo and dialout groups, allowing us to work without beeing root in the future.
 ```sh
 $ su -
