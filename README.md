@@ -86,6 +86,7 @@ $ su -
 Confirm and install the specified packages.  
 Afterwards insert the guest additions CD:  
 VirtualBox -> Devices -> Insert Guest Additions CD...
+Then open the CD in your VM:
 MATE -> Places -> VBox_GAs_...  
 Start the setup by hand in a new terminal:
 ```sh
