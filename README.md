@@ -5,7 +5,7 @@
  - Enable Virtualization support in UEFI if disabled.
  - Install and open the latest Oracle VirtualBox 7.2.X VM Software from https://www.virtualbox.org/
  - Download Debian "amd64 iso-cd" image from:
-   https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-13.1.0-amd64-netinst.iso
+   https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-13.7.0-amd64-netinst.iso
  - Create new Machine in VirtualBox.
  - Select the ISO Image file you downloaded.
  - Disable the checkbox for Unattended Installation. We are making extra choices.
