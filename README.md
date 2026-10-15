@@ -9,7 +9,7 @@
  - Create new Machine in VirtualBox.
  - Select the ISO Image file you downloaded.
  - Disable the checkbox for Unattended Installation. We are making extra choices.
- - Name your new VM “Debian 13.1” choose Type “Linux” and OS “Debian (64-Bit)”.
+ - Name your new VM “Debian 13.7” choose Type “Linux” and OS “Debian (64-Bit)”.
  - Under Virtual Hardware, choose a memory size (RAM). At least 4096MB is recommended.
  - Increase the number of processors to half the available ones.
  - Enable Use UEFI.
